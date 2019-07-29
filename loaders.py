@@ -16,6 +16,7 @@ class FontDs(Dataset):
         self.len = len
         self.generator = generator
         self.char2idx = {char: i for i, char in enumerate(generator.chars)}
+        self.idx2char = {idx: char for char, idx in self.char2idx.items()}
         self.tfms = tfms
 
     def __getitem__(self, idx):

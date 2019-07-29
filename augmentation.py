@@ -1,4 +1,5 @@
-from albumentations import OneOf, IAAAdditiveGaussianNoise, GaussNoise, GridDistortion, IAAPiecewiseAffine, Blur, Rotate, Compose, RandomScale, Resize, PadIfNeeded
+from albumentations import OneOf, IAAAdditiveGaussianNoise, GaussNoise, GridDistortion, IAAPiecewiseAffine, Blur, Rotate, Compose, RandomScale, Resize, PadIfNeeded, MedianBlur
+
 
 noise = OneOf([
     IAAAdditiveGaussianNoise(),
@@ -7,7 +8,7 @@ noise = OneOf([
 
 distortion = OneOf([
     #     OpticalDistortion(),
-#     GridDistortion(distort_limit=0.4),
+    #     GridDistortion(distort_limit=0.4),
     IAAPiecewiseAffine(),
 ])
 
@@ -20,12 +21,12 @@ blur = OneOf([
 rotation = Rotate(limit=10)
 
 scale = RandomScale(0.6)
-pad = PadIfNeeded(64,64, border_mode=1)
-resize = Resize(64,64)
+pad = PadIfNeeded(64, 64, border_mode=1)
+resize = Resize(64, 64)
 
 aug = Compose([
     noise,
-#     distortion,
+    #     distortion,
     blur,
     rotation,
     scale,
